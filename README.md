@@ -7,4 +7,4 @@ coffee break wants to be suitable for any game, and exposes an easy to use API t
 
 # Development, issues and features request
 
-You can follow coffee break's development on [the project board](https://github.com/asso-msn/coffee-break/projects/). You can repost issues and request features by [opening a new issue](https://github.com/asso-msn/coffee-break/issues/new). Please tag it correctly.
+You can follow coffee break's development on [the project board](https://github.com/asso-msn/coffee-break/projects/). You can report issues and request features by [opening a new issue](https://github.com/asso-msn/coffee-break/issues/new). Please tag it correctly.
