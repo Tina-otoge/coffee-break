@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=500px, initial-scale=1">
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			width: 380px;
+			margin: 0;
+			color: white;
+			font-family: Roboto, sans-serif;
+			{% if background %}
+			background: {{ background }};
+			{% else %}
+			background-color: #333;
+			{% endif %}
+		}
+
+		#avatar {
+			display: inline-block;
+			width: 120px;
+			height: 120px;
+			object-fit: cover;
+			border-radius: 50%;
+			border: 3px solid white;
+			box-shadow: 0 0 10px white;
+			position: relative;
+			left: -32px;
+			top: -16px;
+		}
+
+		#game {
+			margin: 8px auto;
+			text-align: center;
+			text-shadow: 0 0 3px black;
+		}
+
+		#profile {
+			width: calc(100% - 128px);
+			display: inline-block;
+		}
+		#profile > * {
+			display: block;
+			margin: auto;
+			text-align: center;
+		}
+
+		#username {
+			margin: 0 28px;
+			background-color: rgba(0, 0, 0, .777);
+			border-radius: 8px;
+			border: 2px solid silver;
+			text-align: center;
+			font-weight: bold;
+			padding: 0.5em 0.2em;
+			vertical-align: top;
+		}
+
+		#song {
+			display: block;
+			box-shadow: 0 -2px 2px white;
+			margin: 1em 0;
+			text-align: center;
+		}
+
+		#title, #artist, #bpm, #genre {
+			display: block;
+			width: 100%;
+			height: 20px;
+			background: #222;
+			margin: 4px 0;
+			font-size: 1.1em;
+		}
+
+		#subtitle, #subartist, #max-chart-combo {
+			font-size: small;
+		}
+
+		#jacket {
+			max-height: 100px;
+			border: 2px solid white;
+			border-radius: 6px;
+		}
+
+		#chart-meta {
+			margin: 1em 0;
+		}
+
+		#chart-meta > * {
+			padding: 0.5em;
+			border: 1px solid white;
+			border-radius: 4px;
+		}
+
+		#hp-bar {
+			background-color: #555;
+			margin: 0 4px;
+			text-align: right;
+		}
+		#hp {
+			background-color: white;
+			color: black;
+		}
+
+		#total {
+			font-size: 1.4em;
+			font-weight: bolder;
+		}
+
+		.gold   { color: gold;   border-color: gold!important; }
+		.red    { color: red;    border-color: red!important; }
+		.yellow { color: yellow; border-color: yellow!important; }
+		.blue   { color: blue;   border-color: blue!important; }
+		.cyan   { color: cyan;   border-color: cyan!important; }
+		.white  { color: white;  border-color: white!important; }
+		.black  { color: black;  border-color: black!important; }
+		.purple { color: purple; border-color: purple!important; }
+
+		.bg-gold   { background-color: gold; }
+		.bg-red    { background-color: red; }
+		.bg-yellow { background-color: yellow; }
+		.bg-blue   { background-color: blue; }
+		.bg-cyan   { background-color: cyan; }
+		.bg-white  { background-color: white; }
+		.bg-black  { background-color: black; }
+		.bg-purple { background-color: purple; }
+
+		.borders { border-style: solid; border-width: 2px; }
+		.big-borders { border-style: solid; border-width: 8px; }
+		.rounded-borders { border-radius: 16px; }
+		.round { border-radius: 50%; }
+	</style>
+</head>
+<body>
+	<header>
+		{% if avatar %}<img src="{{ avatar }}" id="avatar">{% endif %}
+		<div id="profile">
+			{% if game %}<h1 id="game">{{ game }}</h1>{% endif %}
+			{% if username %}<div id="username">{{ username }}</div>{% endif %}
+			{% if player_code %}<div id="player_code">{{ player_code }}</div>{% endif %}
+			{% if rank %}<div id="rank">Rank: <span class="{{ class.rank }}">{{ rank }}</span></div>{% endif %}
+		</div>
+	</header>
+	<main>
+		<div id="song">
+			{% if title %}
+			<div id="title">
+				{{ title }}
+				{% if subtitle %}<span id="subtitle"> / {{ subtitle }}</span>{% endif %}
+			</div>
+			{% endif %}
+			{% if artist %}
+			<div id="artist">
+				{{ artist }}
+				{% if subartist %}<span id="subartist">{{ subartist }}</span>{% endif %}
+			</div>
+			{% endif %}
+			{% if genre %}<div id="genre">{{ genre }}</div>{% endif %}
+			{% if bpm %}<div id="bpm"><small>BPM: </small>{{ bpm }}</div>{% endif %}
+			{% if jacket %}<img id="jacket" src="{{ jacket }}">{% endif %}
+		</div>
+		<div id="chart">
+			<div id="chart-meta">
+				{% if mode %}<span id="mode">{{ mode }}</span>{% endif %}
+				{% if difficulty_name %}<span id="difficulty-name" class=" {{class.difficulty_name}} ">{{ difficulty_name}}</span>{% endif %}
+				{% if difficulty_level %}<span id="difficulty-level">{{ difficulty_level }}</span>{% endif %}
+			</div>
+			{% if max_chart_notes %}<div id="max-chart-notes">Max notes: {{ max_chart_notes }}</div>{% endif %}
+		</div>
+		<div id="score">
+			{% if playstyle %}<div id="playstyle">Playstyle: {{ playstyle }}</div>{% endif %}
+			{% if medal %}<div id="medal" class="{{ class.medal }}">{{ medal }}</div>{% endif %}
+			{% if clear_type %}<div id="clear-type" class="{{ class.clear_type }}">{{ clear_type }}</div>{% endif %}
+			{% if hp %}<div id="hp-bar"><div id="hp" style="width:{{ hp }}%;">{{ hp }}%</div></div>{% endif %}
+			{% if total %}<div>Score: <span id="total" class="{{ class.total }}">{{ total }}</span></div>{% endif %}
+			{% if max_combo %}
+			<div id="max-combo">
+				Max combo: {{ max_combo }}
+				{% if max_chart_combo %}<span id="max-chart-combo">/ {{ max_chart_combo }}</span>{% endif %}
+			</div>
+			{% endif %}
+			<div id="judges">
+				{% for judge, score in scores.items() %}
+				<div class="judge-entry">
+					<div class="judge-name {{ class[judge] }}">{{ judge }}</div>
+					<div class="judge-score">{{ score }}</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</main>
+	<footer>
+		{% if date %}<div id="date">{{ date }}</div>{% endif %}
+		{% if copy %}<div id="copy">&copy; {{ copy }}</div>{% endif %}
+	</footer>
+</body>
+</html>
