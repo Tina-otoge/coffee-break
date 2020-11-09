@@ -1,12 +1,25 @@
 <!doctype html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=500px, initial-scale=1">
+	<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+	<title>Coffee Break ☕ - Scorecard generator</title>
 	<style>
 		@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 		* {
 			box-sizing: border-box;
+		}
+
+		.row {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.column {
+			display: flex;
+			flex-direction: column;
 		}
 
 		body {
@@ -21,14 +34,21 @@
 			{% endif %}
 		}
 
+		img.emoji {
+			height: 1em;
+			width: 1em;
+			margin: 0 .05em 0 .1em;
+			vertical-align: -0.1em;
+		}
+
 		#avatar {
 			display: inline-block;
 			width: 120px;
 			height: 120px;
 			object-fit: cover;
 			border-radius: 50%;
-			border: 3px solid white;
-			box-shadow: 0 0 10px white;
+			<!-- border: 3px solid white; -->
+			<!-- box-shadow: 0 0 10px white; -->
 			position: relative;
 			left: -32px;
 			top: -16px;
@@ -138,11 +158,13 @@
 </head>
 <body>
 	<header>
-		{% if avatar %}<img src="{{ avatar }}" id="avatar">{% endif %}
+		{% if game %}<h1 id="game">{{ game }}</h1>{% endif %}
 		<div id="profile">
-			{% if game %}<h1 id="game">{{ game }}</h1>{% endif %}
-			{% if username %}<div id="username">{{ username }}</div>{% endif %}
-			{% if player_code %}<div id="player_code">{{ player_code }}</div>{% endif %}
+			{% if avatar %}<img src="{{ avatar }}" id="avatar">{% endif %}
+			<div class="column">
+				{% if username %}<div id="username">{{ username }}</div>{% endif %}
+				{% if player_code %}<div id="player_code">{{ player_code }}</div>{% endif %}
+			</div>
 			{% if rank %}<div id="rank">Rank: <span class="{{ class.rank }}">{{ rank }}</span></div>{% endif %}
 		</div>
 	</header>
@@ -167,14 +189,14 @@
 		<div id="chart">
 			<div id="chart-meta">
 				{% if mode %}<span id="mode">{{ mode }}</span>{% endif %}
-				{% if difficulty_name %}<span id="difficulty-name" class=" {{class.difficulty_name}} ">{{ difficulty_name}}</span>{% endif %}
+				{% if difficulty_name %}<span id="difficulty-name" class="{{ class.difficulty_name }}">{{ difficulty_name}}</span>{% endif %}
 				{% if difficulty_level %}<span id="difficulty-level">{{ difficulty_level }}</span>{% endif %}
 			</div>
-			{% if max_chart_notes %}<div id="max-chart-notes">Max notes: {{ max_chart_notes }}</div>{% endif %}
+			{% if notes_count %}<div id="notes-count">Notes count: {{ notes_count }}</div>{% endif %}
 		</div>
 		<div id="score">
 			{% if playstyle %}<div id="playstyle">Playstyle: {{ playstyle }}</div>{% endif %}
-			{% if medal %}<div id="medal" class="{{ class.medal }}">{{ medal }}</div>{% endif %}
+			{% if grade %}<div id="medal" class="{{ class.grade }}">{{ grade }}</div>{% endif %}
 			{% if clear_type %}<div id="clear-type" class="{{ class.clear_type }}">{{ clear_type }}</div>{% endif %}
 			{% if hp %}<div id="hp-bar"><div id="hp" style="width:{{ hp }}%;">{{ hp }}%</div></div>{% endif %}
 			{% if total %}<div>Score: <span id="total" class="{{ class.total }}">{{ total }}</span></div>{% endif %}
@@ -185,9 +207,9 @@
 			</div>
 			{% endif %}
 			<div id="judges">
-				{% for judge, score in scores.items() %}
+				{% for name, score in judges.items() %}
 				<div class="judge-entry">
-					<div class="judge-name {{ class[judge] }}">{{ judge }}</div>
+					<div class="judge-name {{ class[name] }}">{{ name }}</div>
 					<div class="judge-score">{{ score }}</div>
 				</div>
 				{% endfor %}
@@ -198,5 +220,8 @@
 		{% if date %}<div id="date">{{ date }}</div>{% endif %}
 		{% if copy %}<div id="copy">&copy; {{ copy }}</div>{% endif %}
 	</footer>
+	<script>
+		twemoji.parse(document.body);
+	</script>
 </body>
 </html>
