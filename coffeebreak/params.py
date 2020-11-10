@@ -41,7 +41,7 @@ ARGUMENTS = {
 
     # footer
     'date': 'The date on which the score was achieved',
-    'copy': 'A custom copyright notice',
+    'copyright': 'A custom copyright notice',
 
     # customization
     'class': 'Apply custom styles to certain elements',
@@ -56,7 +56,7 @@ DEFAULTS = {
     # score
     'judges': {},
 
-    'copy': 'scorecard generated with coffee break ☕'
+    'copyright': 'scorecard generated with coffee break ☕'
 }
 
 OBJECTS = ['class', 'settings', 'mods', 'judges']

@@ -23,7 +23,7 @@
 		"ERROR": 3
 	},
 
-    "copy": "KONAMI",
+    "copyright": "KONAMI",
 
 	"settings": {
 		"auto_combo": true
