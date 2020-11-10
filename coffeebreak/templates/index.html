@@ -1,4 +1,18 @@
 <!doctype html>
+{% macro input(name, description='', example='', value='', type='text', size=20) -%}
+	{% with id = "form-" + name.lower()|replace('_', '-') %}
+	<p class="form-input">
+		<label for="{{ id }}">{{ name[0]|upper + name[1:]|replace('_', ' ') }}:{% if description %}<br>{{ description }}{% endif %}</label>
+		<input
+			type="{{ type }}"
+			name="{{ name }}"
+			id="{{ id }}"
+			value="{{ value|e }}"
+			size="{{ size }}"
+		>
+	</p>
+	{% endwith %}
+{%- endmacro %}
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -9,6 +23,16 @@
 
 	<body>
 		<h1>Coffee Break ☕ The scorecard generator</h1>
+		<main>
+			<form method="post" action="/api/generate">
+				{% for name, description in inputs.items() %}
+				{{ input(name=name, description=description) }}
+				{% endfor %}
+				<p>
+					<input type="submit" value="Generate">
+				</p>
+			</form>
+		</main>
 	</body>
 	<script>
 		twemoji.parse(document.body);

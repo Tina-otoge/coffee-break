@@ -5,6 +5,7 @@
 }
 
 body {
+	margin: 0;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -13,4 +14,20 @@ img.emoji {
 	width: 1em;
 	margin: 0 .05em 0 .1em;
 	vertical-align: -0.1em;
+}
+
+h1 {
+	text-align: center;
+}
+
+main {
+	max-width: 700px;
+	background-color: #eee;
+	margin: auto;
+	padding: 1em;
+}
+
+.form-input {
+	display: flex;
+	flex-direction: column;
 }

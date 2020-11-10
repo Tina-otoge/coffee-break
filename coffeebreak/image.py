@@ -12,5 +12,5 @@ def get_html(data={}, template_path=root_path / 'templates/card.html'):
     return template.render(data)
 
 def from_html(html, out=None, template_path=None, options={}):
-    options['width'] = options.get('width', 380)
+    options['width'] = options.get('width', 500)
     return imgkit.from_string(html, out, options)

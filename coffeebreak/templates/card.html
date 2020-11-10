@@ -8,23 +8,52 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+		:root {
+			--red: #f6453d;
+			--orange: #f67a3d;
+			--light-orange: #f6a93d;
+			--gold: #f6d93d;
+			--yellow: #f6ec3d;
+			--lime: #adf63d;
+			--green: #48f63d;
+			--blreen: #3df6b9;
+			--blue: #3de7f6;
+			--ocean: #3d84f6;
+			--purple: #6f3df6;
+			--magenta: #c23df6;
+			--pink: #f63ddc;
+			--rainbow: linear-gradient(to right, var(--yellow),var(--blreen),var(--magenta));
+		}
+
 		* {
 			box-sizing: border-box;
 		}
 
-		.row {
+		.row, .column {
 			display: flex;
+		}
+
+		.row {
 			flex-direction: row;
 		}
 
 		.column {
-			display: flex;
 			flex-direction: column;
 		}
 
+		.row.spaced, .column.spaced {
+			justify-content: space-between;
+		}
+
+		html {
+			background-color: white;
+		}
+
 		body {
-			width: 380px;
+			width: 500px;
 			margin: 0;
+			padding: 0.5em;
+			font-size: 24px;
 			color: white;
 			font-family: Roboto, sans-serif;
 			{% if background %}
@@ -41,17 +70,40 @@
 			vertical-align: -0.1em;
 		}
 
+		header {
+			margin-bottom: 1em;
+			background-color: #222;
+		}
+		header, #results {
+			margin: -1em -0.5em 1em;
+			padding: 0.5em;
+		}
+
+		header .row, header .column {
+			align-items: center;
+		}
+
+		#profile, #rank, #profile-extras {
+			text-align: right;
+		}
+
+		#profile-extras-column {
+			align-items: flex-end;
+		}
+
+		#rank {
+			padding: 0 0.3em;
+		}
+
 		#avatar {
+			width: 75px;
+			height: 75px;
+			margin-right: 1em;
+		}
+
+		#avatar, #jacket {
 			display: inline-block;
-			width: 120px;
-			height: 120px;
 			object-fit: cover;
-			border-radius: 50%;
-			<!-- border: 3px solid white; -->
-			<!-- box-shadow: 0 0 10px white; -->
-			position: relative;
-			left: -32px;
-			top: -16px;
 		}
 
 		#game {
@@ -60,160 +112,304 @@
 			text-shadow: 0 0 3px black;
 		}
 
-		#profile {
-			width: calc(100% - 128px);
-			display: inline-block;
-		}
-		#profile > * {
-			display: block;
-			margin: auto;
-			text-align: center;
-		}
-
 		#username {
-			margin: 0 28px;
-			background-color: rgba(0, 0, 0, .777);
-			border-radius: 8px;
-			border: 2px solid silver;
-			text-align: center;
 			font-weight: bold;
-			padding: 0.5em 0.2em;
+			font-size: 1.4em;
 			vertical-align: top;
+			width: 100%;
 		}
 
 		#song {
-			display: block;
-			box-shadow: 0 -2px 2px white;
-			margin: 1em 0;
-			text-align: center;
+			margin-bottom: 1em;
 		}
 
-		#title, #artist, #bpm, #genre {
-			display: block;
+		#song-meta {
+    		align-items: flex-start;
+		}
+
+		#song-meta > * {
+			margin: 0.25em 0;
+		}
+
+		#title {
+			font-weight: bolder;
+			font-size: 1.3em;
+			letter-spacing: 1.1;
+		}
+
+		#bpm {
+			padding-right: 1em;
+		}
+
+		#bpm .value {
+			word-break: keep-all;
+		}
+
+		#song-extras {
 			width: 100%;
-			height: 20px;
-			background: #222;
-			margin: 4px 0;
-			font-size: 1.1em;
+			flex-wrap: wrap;
 		}
 
-		#subtitle, #subartist, #max-chart-combo {
+		#song-extras > * {
+			flex: 1 1 50%;
+		}
+
+		#subtitle, #subartist {
 			font-size: small;
 		}
 
 		#jacket {
-			max-height: 100px;
-			border: 2px solid white;
+			width: 7em;
+			height: 7em;
 			border-radius: 6px;
+			margin-left: 1em;
+			box-shadow: 0 0 3px rgba(0, 0, 0, .65);
 		}
 
-		#chart-meta {
-			margin: 1em 0;
+		#chart-column > * {
+			margin-bottom: 0.2em;
 		}
 
-		#chart-meta > * {
-			padding: 0.5em;
-			border: 1px solid white;
-			border-radius: 4px;
+		#chart-column > *:nth-last-child(1) {
+			margin-bottom: 0;
+		}
+
+		#grade {
+			font-size: 3.5em;
+			font-family: monospace;
+			line-height: 0.8em;
+		}
+
+		#accuracy {
+			text-align: center;
 		}
 
 		#hp-bar {
 			background-color: #555;
-			margin: 0 4px;
 			text-align: right;
 		}
 		#hp {
 			background-color: white;
 			color: black;
+			font-size: 12px;
+			padding: 0.2em 0.5em;
+		}
+		#hp, #hp-bar {
+			border-radius: 16px;
 		}
 
-		#total {
-			font-size: 1.4em;
+		#score {
+			font-size: 1.6em;
+			font-family: monospace;
 			font-weight: bolder;
 		}
 
-		.gold   { color: gold;   border-color: gold!important; }
-		.red    { color: red;    border-color: red!important; }
-		.yellow { color: yellow; border-color: yellow!important; }
-		.blue   { color: blue;   border-color: blue!important; }
-		.cyan   { color: cyan;   border-color: cyan!important; }
-		.white  { color: white;  border-color: white!important; }
-		.black  { color: black;  border-color: black!important; }
-		.purple { color: purple; border-color: purple!important; }
+		#results {
+			background-color: #555;
+			margin-top: 1em;
+		}
 
-		.bg-gold   { background-color: gold; }
-		.bg-red    { background-color: red; }
-		.bg-yellow { background-color: yellow; }
-		.bg-blue   { background-color: blue; }
-		.bg-cyan   { background-color: cyan; }
-		.bg-white  { background-color: white; }
-		.bg-black  { background-color: black; }
-		.bg-purple { background-color: purple; }
+		.judge-name {
+			padding-right: 0.5em;
+		}
 
-		.borders { border-style: solid; border-width: 2px; }
+		footer {
+			font-size: 0.7em;
+		}
+
+		.gold    { color: var(--gold); border-color: var(--gold)!important; }
+		.red     { color: var(--red); border-color: var(--red)!important; }
+		.orange  { color: var(--orange); border-color: var(--orange); }
+		.light-orange { color: var(--light-orange); border-color: var(--light-orange); }
+		.yellow  { color: var(--yellow); border-color: var(--yellow); }
+		.lime    { color: var(--lime); border-color: var(--lime); }
+		.green   { color: var(--green); border-color: var(--green); }
+		.blreen  { color: var(--blreen); border-color: var(--blreen); }
+		.blue    { color: var(--blue); border-color: var(--blue); }
+		.ocean   { color: var(--ocean); border-color: var(--ocean); }
+		.purple  { color: var(--purple); border-color: var(--purple); }
+		.magenta { color: var(--magenta); border-color: var(--magenta); }
+		.pink    { color: var(--pink); border-color: var(--pink); }
+		.rainbow {
+			background: var(--rainbow);
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+			-webkit-text-fill-color: transparent;
+			border-color: var(--rainbow);
+		}
+
+		.bg-gold    { background-color: var(--gold)!important; }
+		.bg-red     { background-color: var(--red)!important; }
+		.bg-orange  { background-color: var(--orange)!important; }
+		.bg-light-orange { background-color: var(--light-orange)!important; }
+		.bg-yellow  { background-color: var(--yellow)!important; }
+		.bg-lime    { background-color: var(--lime)!important; }
+		.bg-green   { background-color: var(--green)!important; }
+		.bg-blreen  { background-color: var(--blreen)!important; }
+		.bg-blue    { background-color: var(--blue)!important; }
+		.bg-ocean   { background-color: var(--ocean)!important; }
+		.bg-purple  { background-color: var(--purple)!important; }
+		.bg-magenta { background-color: var(--magenta)!important; }
+		.bg-pink    { background-color: var(--pink)!important; }
+		.bg-rainbow { background: var(--rainbow); }
+
+		.borders { border-style: solid; border-width: 2px; border-radius: 4px; padding: 0 0.2em; }
 		.big-borders { border-style: solid; border-width: 8px; }
 		.rounded-borders { border-radius: 16px; }
 		.round { border-radius: 50%; }
+		.contain { object-fit: contain!important; }
 	</style>
 </head>
 <body>
 	<header>
 		{% if game %}<h1 id="game">{{ game }}</h1>{% endif %}
-		<div id="profile">
-			{% if avatar %}<img src="{{ avatar }}" id="avatar">{% endif %}
-			<div class="column">
-				{% if username %}<div id="username">{{ username }}</div>{% endif %}
-				{% if player_code %}<div id="player_code">{{ player_code }}</div>{% endif %}
+		<div id="profile" class="row spaced">
+			<div class="row">
+				{% if avatar %}<img src="{{ avatar }}" id="avatar" class="{{ class.avatar }}">{% endif %}
+				<div class="column">
+					{% if username %}<div id="username">{{ username }}</div>{% endif %}
+					{% if player_code %}<div id="player_code">{{ player_code }}</div>{% endif %}
+				</div>
 			</div>
-			{% if rank %}<div id="rank">Rank: <span class="{{ class.rank }}">{{ rank }}</span></div>{% endif %}
+			<div id="profile-extras-column" class="column">
+				{% if playstyle %}
+				<div id="playstyle">
+					<small>Playstyle:</small>
+					{{ playstyle }}
+				</div>
+				{% endif %}
+
+				{% if rank %}
+				<div id="rank" class="borders {{ class.rank }}">
+					{{ rank }}
+				</div>
+				{% endif %}
+
+				{% if profile_extras %}
+				<div id="profile-extras">
+					{{ profile_extras }}
+				</div>
+				{% endif %}
+			</div>
 		</div>
 	</header>
+
 	<main>
-		<div id="song">
-			{% if title %}
-			<div id="title">
-				{{ title }}
-				{% if subtitle %}<span id="subtitle"> / {{ subtitle }}</span>{% endif %}
+		<div id="song" class="row spaced">
+			<div id="song-meta" class="column">
+				{% if title %}
+				<div id="title">
+					{{ title }}
+					{% if subtitle %}
+					<span id="subtitle"> / {{ subtitle }}</span>
+					{% endif %}
+				</div>
+				{% endif %}
+				{% if artist %}
+				<div id="artist">
+					{{ artist }}
+					{% if subartist %}<span id="subartist"> / {{ subartist }}</span>{% endif %}
+				</div>
+				{% endif %}
+				<div id="song-extras" class="row">
+
+					{% if bpm %}
+					<div id="bpm" class="column">
+						<small>BPM:</small>
+						<span class="value">{{ bpm }}</span>
+					</div>
+					{% endif %}
+
+					{% if notes_count %}
+					<div id="notes-count" class="column">
+						<small>Notes count:</small>
+						<span class="value">{{ notes_count }}</span>
+					</div>
+					{% endif %}	
+
+					{% if genre %}
+					<div id="genre" class="column">
+						<small>Genre:</small>
+						<span class="value">{{ genre }}</span>
+					</div>
+					{% endif %}
+
+					{% if creator %}
+					<div id="creator" class="column">
+						<small>Creator:</small>
+						<span class="value">{{ creator }}</span>
+					</div>
+					{% endif %}	
+				</div>
 			</div>
-			{% endif %}
-			{% if artist %}
-			<div id="artist">
-				{{ artist }}
-				{% if subartist %}<span id="subartist">{{ subartist }}</span>{% endif %}
-			</div>
-			{% endif %}
-			{% if genre %}<div id="genre">{{ genre }}</div>{% endif %}
-			{% if bpm %}<div id="bpm"><small>BPM: </small>{{ bpm }}</div>{% endif %}
 			{% if jacket %}<img id="jacket" src="{{ jacket }}">{% endif %}
 		</div>
-		<div id="chart">
-			<div id="chart-meta">
-				{% if mode %}<span id="mode">{{ mode }}</span>{% endif %}
-				{% if difficulty_name %}<span id="difficulty-name" class="{{ class.difficulty_name }}">{{ difficulty_name}}</span>{% endif %}
-				{% if difficulty_level %}<span id="difficulty-level">{{ difficulty_level }}</span>{% endif %}
-			</div>
-			{% if notes_count %}<div id="notes-count">Notes count: {{ notes_count }}</div>{% endif %}
-		</div>
-		<div id="score">
-			{% if playstyle %}<div id="playstyle">Playstyle: {{ playstyle }}</div>{% endif %}
-			{% if grade %}<div id="medal" class="{{ class.grade }}">{{ grade }}</div>{% endif %}
-			{% if clear_type %}<div id="clear-type" class="{{ class.clear_type }}">{{ clear_type }}</div>{% endif %}
-			{% if hp %}<div id="hp-bar"><div id="hp" style="width:{{ hp }}%;">{{ hp }}%</div></div>{% endif %}
-			{% if total %}<div>Score: <span id="total" class="{{ class.total }}">{{ total }}</span></div>{% endif %}
-			{% if max_combo %}
-			<div id="max-combo">
-				Max combo: {{ max_combo }}
-				{% if max_chart_combo %}<span id="max-chart-combo">/ {{ max_chart_combo }}</span>{% endif %}
-			</div>
-			{% endif %}
-			<div id="judges">
-				{% for name, score in judges.items() %}
-				<div class="judge-entry">
-					<div class="judge-name {{ class[name] }}">{{ name }}</div>
-					<div class="judge-score">{{ score }}</div>
+
+		<div class="row spaced">
+			<div id="chart-column" class="column spaced">
+				<div id="chart">
+					{% if mode %}<span id="mode" class="borders">{{ mode }}</span>{% endif %}
+					{% if difficulty %}<span id="difficulty" class="borders {{ class.difficulty }}">{{ difficulty }}</span>{% endif %}
+					{% if level %}<span id="level" class="borders {{ class.level }}">{{ level }}</span>{% endif %}
+					<span id="mods">
+						{% for mod in mods %}
+						<span class="mod borders mod-{{ mod }}">{{ mod }}</span>
+						{% endfor %}
+					</span>
 				</div>
-				{% endfor %}
+				{% if clear_type %}<div id="clear-type" class="{{ class.clear_type }}">{{ clear_type }}</div>{% endif %}
+				{% if hp %}<div id="hp-bar"><div id="hp" class="{{ class.hp }}" style="width:{{ hp }}%;">{{ hp }}%</div></div>{% endif %}
 			</div>
+
+			<div class="column">
+				{% if grade %}<div id="grade" class="{{ class.grade }}">{{ grade }}</div>{% endif %}
+				{% if accuracy %}<div id="accuracy" class="{{ class.accuracy }}">{{ accuracy}}%</div>{% endif %}
+			</div>
+		</div>
+
+		<div id="results" class="row spaced">
+			<div class="column">
+
+				{% if score %}
+				<div id="score" class="{{ class.score }}">{{ score }}</div>
+				{% endif %}
+
+				{% if max_combo %}
+				<div id="max-combo" class="column">
+					<small>Combo:</small>
+					<span class="value">
+						{{ max_combo }}
+						{% if max_chart_combo %}<small id="max-chart-combo">/ {{ max_chart_combo }}</small>{% endif %}
+					</span>
+				</div>
+				{% endif %}
+
+				{% if breaks %}
+				<div id="breaks" class="column">
+					<small>Breaks:</small>
+					<span class="value">{{ breaks }}</span>
+				</div>
+				{% endif %}
+
+				{% if pp %}
+				<div id="pp" class="column">
+					<small>pp:</small>
+					<span class="value">{{ pp }}</span>
+				</div>
+				{% endif %}
+
+			</div>
+			<table id="judges">
+				<tbody>
+					{% for name, score in judges.items() %}
+					<tr class="judge-entry row spaced">
+						<td class="judge-name {{ class["judge-" + name] }}">{{ name }}</td>
+						<td class="judge-score">{{ score }}</tr>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
 		</div>
 	</main>
 	<footer>

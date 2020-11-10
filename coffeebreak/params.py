@@ -1,16 +1,16 @@
-from datetime import datetime
-
 ARGUMENTS = {
     # customization
-    'class': {},
-    'background': None,
+    'class': 'Apply custom styles to certain elements',
+    'settings': None,
 
     # player
-    'avatar': None,
+    'avatar': 'Must be an URL',
     'game': None,
     'username': None,
-    'player_code': None,
-    'rank': None, # dan
+    'player_code': 'Used in some games to add to a friendlist',
+    'rank': 'The dan rank or skill level of a player',
+    'playstyle': 'Precision on the playstyle, such as controller or keyboard',
+    'profile_extras': 'Extra infos, arcade, global rank, country...',
 
     # song
     'title': None,
@@ -19,27 +19,42 @@ ARGUMENTS = {
     'subartist': None,
     'genre': None,
     'bpm': None,
-    'jacket': None, # URL
+    'jacket': 'Must be an URL',
 
     # chart
-    'mode': None,
-    'difficulty_name': None,
-    'difficulty_level': None,
-    'notes_count': None,
+    'mode': 'Useful for games with SP and DP modes',
+    'difficulty': 'The name of the chart difficulty',
+    'level': 'The level of the chart difficulty',
+    'creator': 'The creator of the chart/map',
+    'notes_count': 'Amount of notes',
+    'mods': 'List of mods, use shortnames/acronyms if possible',
 
     # score
-    'playstyle': None, # input type (controller, keyboard)
-    'grade': None,
-    'clear_type': None,
-    'total': None, # actual score
-    'hp': None, # from 0 to 100
-    'max_combo': None,
-    'max_chart_combo': None,
+    'grade': 'The grade or rank, such as A, AA+, S, etc',
+    'clear_type': 'The clear type of medal, such as CLEARED, FAILED, HARD CLEAR, FULLCOMBO, etc',
+    'score': None, # actual score
+    'accuracy': None,
+    'hp': 'Must be an integer from 0 to 100',
+    'max_combo': 'Maximum combo reached by the player',
+    'max_chart_combo': 'Maximum combo reachable on the chart',
+    'breaks': 'Combo breaks',
+    'pp': 'Performance points',
 
     # judges
-    'judges': [], # {"judge_name": "score"}
+    'judges': 'Dictionary of judges mapping to their respective amounts',
 
     # footer
-    'date': datetime.now().replace(microsecond=0),
+    'date': 'The date on which the score was achieved',
+    'copy': 'A custom copyright notice'
+}
+
+DEFAULTS = {
+    'class': {},
+    'settings': {},
+    'mods': [],
+
+    # score
+    'judges': {},
+
     'copy': 'scorecard generated with coffee break ☕'
 }
