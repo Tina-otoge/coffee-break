@@ -23,9 +23,18 @@
 	</head>
 
 	<body>
-		<h1>Coffee Break ☕ The scorecard generator</h1>
+		<h1><a href="{{ url_for('index') }}">Coffee Break ☕</a> The scorecard generator</h1>
 		<main>
-			<form method="post" action="/api/generate">
+			<p>
+				Check pre-filled values for reference:
+			</p>
+			<p>
+				<a href="{{ url_for('prefilled', name='iidx_result') }}">IIDX</a>
+				<a href="{{ url_for('prefilled', name='sdvx_result') }}">SDVX</a>
+				<a href="{{ url_for('prefilled', name='scoresaber') }}">Score Saber</a>
+				<a href="{{ url_for('prefilled', name='osu') }}">osu!</a>
+			</p>
+			<form action="/api/generate">
 				{% for name, description in inputs.items() %}
 				{{ input(name=name, description=description) }}
 				{% endfor %}
