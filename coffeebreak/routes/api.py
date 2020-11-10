@@ -21,7 +21,10 @@ def generate_html(data=None):
     data = data or filter_data(data)
     for k in params.OBJECTS:
         if isinstance(data[k], str):
-            data[k] = json.loads(data[k])
+            try:
+                data[k] = json.loads(data[k])
+            except json.JSONDecodeError:
+                del data[k]
     data = handle_settings(data)
     for k in params.DEFAULTS:
         if k not in data:
