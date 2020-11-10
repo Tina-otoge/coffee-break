@@ -2,8 +2,8 @@ import io
 import json
 import os
 
-from flask import abort, send_file, request, url_for
-from coffeebreak import app, image, params, root_path
+from flask import abort, current_app, send_file, request, url_for, jsonify
+from coffeebreak import app, image, params, root_path, storage
 
 def handle_settings(data):
     if 'settings' not in data:
@@ -28,10 +28,21 @@ def generate(data=None):
     result = image.from_html(html)
     return send_file(io.BytesIO(result), mimetype='image/jpeg')
 
+@app.route('/api/cards/<int:id>.jpg')
+def get_card(id):
+    db = storage.JSONStorage()
+    return generate(db.get(id))
+
 @app.route('/api/register', methods=['GET', 'POST'])
 def register():
-    data = filter_data()
-    return generate()
+    data = json.dumps(filter_data())
+    db = storage.JSONStorage()
+    index = db.insert(data)
+    db.commit()
+    return jsonify({
+        'id': index,
+        'url': current_app.config.get('PUBLIC_URI') + url_for('get_card', id=index)
+    })
 
 def get_data_from_example(name):
     try:
