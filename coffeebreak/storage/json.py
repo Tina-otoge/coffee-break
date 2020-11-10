@@ -12,10 +12,6 @@ class JSONStorage(Storage):
         except (FileNotFoundError, json.JSONDecodeError):
             print('Could not open storage file ({})'.format(self.STORAGE_PATH))
             self.data = []
-        try:
-            self.index = len(self.data)
-        except IndexError:
-            self.index = 0
 
     def get(self, id):
         return self.data[id]
@@ -31,7 +27,7 @@ class JSONStorage(Storage):
         if index:
             return index
         self.data.append(value)
-        return self.index
+        return len(self.data) - 1
 
     def commit(self):
         with open(self.STORAGE_PATH, 'w') as f:
