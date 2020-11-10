@@ -14,12 +14,18 @@ def handle_settings(data):
 
 def filter_data(data=None):
     data = data or dict(request.values)
-    data = handle_settings(data)
-    return {k: data.get(k, params.DEFAULTS.get(k)) for k in params.ARGUMENTS}
+    return {k: v for k, v in data.items() if k in params.ARGUMENTS}
 
 @app.route('/api/card.html', methods=['GET', 'POST'])
 def generate_html(data=None):
     data = data or filter_data(data)
+    for k in params.OBJECTS:
+        if isinstance(data[k], str):
+            data[k] = json.loads(data[k])
+    data = handle_settings(data)
+    for k in params.DEFAULTS:
+        if k not in data:
+            data[k] = params.DEFAULTS[k]
     return image.get_html(data)
 
 @app.route('/api/generate', methods=['GET', 'POST'])
@@ -31,11 +37,14 @@ def generate(data=None):
 @app.route('/api/cards/<int:id>.jpg')
 def get_card(id):
     db = storage.JSONStorage()
-    return generate(db.get(id))
+    try:
+        return generate(db.get(id))
+    except IndexError:
+        abort(404)
 
 @app.route('/api/register', methods=['GET', 'POST'])
 def register():
-    data = json.dumps(filter_data())
+    data = filter_data()
     db = storage.JSONStorage()
     index = db.insert(data)
     db.commit()
@@ -45,8 +54,8 @@ def register():
     })
 
 def get_data_from_example(name):
+    path = root_path / '../examples/requests/{}.json'.format(name)
     try:
-        path = root_path / '../examples/requests/{}.json'.format(name)
         with open(path) as f:
             data = json.load(f)
     except FileNotFoundError:

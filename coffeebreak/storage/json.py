@@ -11,26 +11,26 @@ class JSONStorage(Storage):
                 self.data = json.load(f)
         except (FileNotFoundError, json.JSONDecodeError):
             print('Could not open storage file ({})'.format(self.STORAGE_PATH))
-            self.data = {}
+            self.data = []
         try:
-            self.index = list(sorted(self.data.keys()))[-1]
+            self.index = len(self.data)
         except IndexError:
             self.index = 0
 
     def get(self, id):
-        return json.loads(self.data[str(id)])
+        return self.data[id]
 
     def find(self, value):
-        results = [k for k, v in self.data.items() if value == v]
-        if len(results) > 0:
-            return results[0]
-        return None
+        try:
+            self.data.index(value)
+        except ValueError:
+            return None
 
     def insert(self, value):
         index = self.find(value)
         if index:
             return index
-        self.data[++self.index] = value
+        self.data.append(value)
         return self.index
 
     def commit(self):

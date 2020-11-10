@@ -1,8 +1,4 @@
 ARGUMENTS = {
-    # customization
-    'class': 'Apply custom styles to certain elements',
-    'settings': None,
-
     # player
     'avatar': 'Must be an URL',
     'game': None,
@@ -45,7 +41,11 @@ ARGUMENTS = {
 
     # footer
     'date': 'The date on which the score was achieved',
-    'copy': 'A custom copyright notice'
+    'copy': 'A custom copyright notice',
+
+    # customization
+    'class': 'Apply custom styles to certain elements',
+    'settings': None,
 }
 
 DEFAULTS = {
@@ -58,3 +58,5 @@ DEFAULTS = {
 
     'copy': 'scorecard generated with coffee break ☕'
 }
+
+OBJECTS = ['class', 'settings', 'mods', 'judges']
