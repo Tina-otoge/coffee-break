@@ -31,8 +31,9 @@ def generate_html(data=None):
             data[k] = params.DEFAULTS[k]
     return image.get_html(data)
 
+@app.route('/api/card.jpg', methods=['GET', 'POST'])
 @app.route('/api/generate', methods=['GET', 'POST'])
-def generate(data=None):
+def generate_image(data=None):
     html = generate_html(data)
     result = image.from_html(html)
     return send_file(io.BytesIO(result), mimetype='image/jpeg')

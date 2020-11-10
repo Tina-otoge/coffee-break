@@ -38,7 +38,8 @@
 				Available endpoints:
 			</p>
 			<ul>
-				<li><i class="code">/api/generate</i>: Returns the generated scorecard as a binary encoded image</li>
+				<li><i class="code">/api/generate</i>: Returns the generated scorecard as a binary encoded image<br>
+					Alternatively, <i class="code">/api/card.jpg</i> can be used.</li>
 				<li><i class="code">/api/card.html</i>: Returns the generated image as an HTML page</li>
 				<li><i class="code">/api/register</i>: Saves the scorecard request and returns a JSON object with its ID and URL</li>
 			</ul>
@@ -46,7 +47,7 @@
 				All endpoints are reachable on GET and POST requests.
 			</p>
 
-			<form action="/api/generate">
+			<form action="{{ url_for('generate_image') }}">
 				{% for name, description in inputs.items() %}
 				{{ input(name=name, description=description) }}
 				{% endfor %}
