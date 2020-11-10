@@ -42,7 +42,7 @@ def generate_image(data=None):
 def get_card(id):
     db = storage.JSONStorage()
     try:
-        return generate(db.get(id))
+        return generate_image(db.get(id))
     except IndexError:
         abort(404)
 
@@ -74,4 +74,4 @@ def example_html(name):
 
 @app.route('/api/examples/<name>')
 def example_card(name):
-    return generate(get_data_from_example(name))
+    return generate_image(get_data_from_example(name))
