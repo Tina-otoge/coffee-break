@@ -42,6 +42,9 @@
 				<li><i class="code">/api/card.html</i>: Returns the generated image as an HTML page</li>
 				<li><i class="code">/api/register</i>: Saves the scorecard request and returns a JSON object with its ID and URL</li>
 			</ul>
+			<p>
+				All endpoints are reachable on GET and POST requests.
+			</p>
 
 			<form action="/api/generate">
 				{% for name, description in inputs.items() %}
