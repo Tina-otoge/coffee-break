@@ -31,3 +31,12 @@ main {
 	display: flex;
 	flex-direction: column;
 }
+
+.code {
+	font-style: normal;
+	font-family: monospace;
+	background-color: lightgray;
+	color: black;
+	border-radius: 3px;
+	padding: 0.1em 0.2em;
+}

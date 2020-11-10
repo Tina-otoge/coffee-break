@@ -34,6 +34,15 @@
 				<a href="{{ url_for('prefilled', name='scoresaber') }}">Score Saber</a>
 				<a href="{{ url_for('prefilled', name='osu') }}">osu!</a>
 			</p>
+			<p>
+				Available endpoints:
+			</p>
+			<ul>
+				<li><i class="code">/api/generate</i>: Returns the generated scorecard as a binary encoded image</li>
+				<li><i class="code">/api/card.html</i>: Returns the generated image as an HTML page</li>
+				<li><i class="code">/api/register</i>: Saves the scorecard request and returns a JSON object with its ID and URL</li>
+			</ul>
+
 			<form action="/api/generate">
 				{% for name, description in inputs.items() %}
 				{{ input(name=name, description=description) }}
