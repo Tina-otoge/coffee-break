@@ -1,0 +1,42 @@
+{
+	"avatar": "https://a.ppy.sh/8651666?1585593155.png",
+    "username": "Karydza",
+    "game": "osu!",
+	"profile_extras": "2028pp<br>#271765<br>(FR: #11752)",
+
+    "title": "Kanjou Chemistry (Drum 'n' Bass Remix)",
+    "artist": "senya",
+	"jacket": "https://b.ppy.sh/thumb/92509l.jpg",
+	"bpm": 174,
+
+    "difficulty": "Naryuga's Normal",
+	"level": 1.73,
+	"creator": "Satellite",
+	"notes_count": "442 | 384",
+	"mods": ["FL", "HR"],
+
+	"grade": "S",
+	"clear_type": "Fullcombo",
+	"score": 4512985,
+    "accuracy": 99.77,
+	"judges": {
+		"300": 295,
+		"100": 1,
+		"50": 0,
+		"Miss": 0
+	},
+	"max_combo": 1053,
+
+	"date": "2020-04-01 19:47:03",
+    "copy": "osu!",
+
+    "class": {
+		"level": "green",
+        "clear_type": "rainbow",
+		"grade": "gold",
+        "judge-300": "blue",
+		"rank": "purple",
+		"avatar": "round"
+    }
+}
+

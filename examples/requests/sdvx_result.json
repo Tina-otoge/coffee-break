@@ -1,0 +1,41 @@
+{
+	"avatar": "https://fairyjoke.tina.moe/api/sdvx/apecas/3001.png",
+    "username": "*PLUMP.*",
+    "game": "SOUND VOLTEX",
+	"rank": "SL∞",
+	"profile_extras": "20.43VF<br>NORIZONE⭐",
+
+    "title": "Ring! Run! Nyan!!",
+    "artist": "MisomyL",
+	"jacket": "https://remywiki.com/images/thumb/e/e0/Ring%21Run%21Nyan%21%21.png/200px-Ring%21Run%21Nyan%21%21.png",
+
+    "difficulty": "VIVID",
+	"level": 18,
+
+    "grade": "S",
+    "clear_type": "HARD CLEAR",
+    "score": 9982943,
+	"hp": 100,
+	"max_combo": 1267,
+    "judges": {
+		"CRITICAL": 2048,
+		"NEAR": 1,
+		"ERROR": 3
+	},
+
+    "copy": "KONAMI",
+
+	"settings": {
+		"auto_combo": true
+	},
+    "class": {
+        "difficulty": "pink",
+        "clear_type": "red",
+		"hp": "bg-orange",
+		"grade": "rainbow",
+        "judge-CRITICAL": "yellow",
+		"rank": "purple",
+		"avatar": "contain"
+    }
+}
+

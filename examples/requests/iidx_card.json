@@ -1,0 +1,33 @@
+{
+    "username": "TAKA83",
+    "game": "beatmania IIDX",
+
+    "title": "Arabian Rave Night",
+    "artist": "dj MAX STEROID",
+
+    "mode": "SP",
+    "difficulty": "LEGGENDARIA",
+
+    "grade": "A",
+    "clear_type": "CLEAR",
+    "score": 2790,
+	"breaks": 34,
+    "judges": {
+		"PGREAT": 1173,
+		"GREAT": 444,
+		"GOOD": 237,
+		"BAD": 17,
+		"POOR": 38
+	},
+
+    "date": "2020-11-09 20:10",
+    "copy": "KONAMI",
+
+    "class": {
+        "difficulty": "magenta",
+        "clear_type": "ocean",
+		"grade": "green",
+        "judge-PGREAT": "rainbow"
+    }
+}
+

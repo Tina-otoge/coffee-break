@@ -1,0 +1,34 @@
+{
+    "username": "GENE",
+    "game": "beatmania IIDX",
+
+    "title": "When I Met U",
+    "artist": "LADY'S ONLY",
+
+    "mode": "SP",
+    "difficulty": "ANOTHER",
+	"level": 10,
+	"notes_count": 1033,
+
+    "grade": "AAA",
+    "clear_type": "F-COMBO",
+    "score": 1850,
+	"breaks": 0,
+    "judges": {
+		"PGREAT": 841,
+		"GREAT": 168,
+		"GOOD": 24,
+		"BAD": 0,
+		"POOR": 1
+	},
+
+    "copy": "KONAMI",
+
+    "class": {
+        "difficulty": "red",
+        "clear_type": "rainbow",
+		"grade": "blue",
+        "judge-PGREAT": "rainbow"
+    }
+}
+

@@ -1,0 +1,31 @@
+{
+	"avatar": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7c/7c3aab133b80a14a15f0ef5283b82bef89e18d4f_full.jpg",
+    "username": "Jeremiidesu",
+    "game": "Beat Saber",
+	"profile_extras": "3480.81pp<br>#7988<br>(FR: #270)",
+
+    "title": "Overkill",
+    "artist": "Riot",
+	"jacket": "https://scoresaber.com/imports/images/songs/2FDDB136BDA7F9E29B4CB6621D6D8E0F8A43B126.png",
+	"bpm": 174,
+
+    "difficulty": "Expert+",
+	"level": 7.32,
+	"creator": "Nuketime",
+	"notes_count": 1812,
+	"mods": ["DA", "FS"],
+
+	"grade": "A",
+	"score": 1402823,
+    "accuracy": 76.83,
+	"pp": 219.36,
+
+	"date": "2020-08-27 01:06:31",
+    "copy": "Score Saber",
+
+    "class": {
+        "difficulty": "pink",
+		"avatar": "round"
+    }
+}
+

@@ -4,18 +4,20 @@
     "player_code": "0573-0573",
     "rank": "SL10",
     "game": "SOUND VOLTEX",
+	"profile_extras": "Tinarcade~⭐",
 
     "title": "Brain Power",
-    "subtitle": "ooooooo-",
-    "artist": "NOMA",
-    "subartist": "The Brain Power man",
+    "subtitle": "fucking meme",
+    "artist": "ノマ",
+    "subartist": "NOMA",
     "genre": "Electronic",
     "bpm": "170-173",
     "jacket": "https://remywiki.com/images/thumb/e/e7/Brain_Power.png/200px-Brain_Power.png",
 
     "mode": "DP",
-    "difficulty_name": "EXHAUST",
-    "difficulty_level": 16,
+    "difficulty": "EXHAUST",
+    "level": 16,
+	"notes_count": 1430,
     "max_chart_combo": 1597,
     "max_chart_notes": "idk lol",
 
@@ -23,16 +25,24 @@
     "grade": "AAA",
     "clear_type": "HARD CLEAR",
     "hp": 94.45,
-    "total": 9874123,
+    "score": 9874123,
+	"accuracy": 97.4,
     "max_combo": 1573,
-    "judges": {"CRITICAL": 1000, "NEAR": 573, "ERROR": 24},
+	"breaks": 34,
+    "judges": {
+		"PGREAT": 1000,
+		"GREAT": 573,
+		"GOOD": 24,
+		"BAD": 17,
+		"POOR": 38
+	},
 
     "date": "2019-11-25 4:24PM",
     "copy": "cool stuff",
 
     "class": {
-        "difficulty_name": "red",
-        "medal": "gold",
+        "difficulty": "red",
+        "grade": "gold",
         "clear_type": "red",
         "CRITICAL": "yellow"
     }
