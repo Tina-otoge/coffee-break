@@ -379,12 +379,12 @@
 						{% endfor %}
 					</span>
 				</div>
-				{% if clear_type %}<div id="clear-type" class="{{ class.clear_type }}">{{ clear_type }}</div>{% endif %}
+				{% if clear_type %}<div id="clear-type" class="{{ class.clear_type }}{% if class.clear_types %}{{ class.clear_types[clear_type] }}{% endif %}">{{ clear_type }}</div>{% endif %}
 				{% if hp %}<div id="hp-bar"><div id="hp" class="{{ class.hp }}" style="width:{{ hp }}%;">{{ hp }}%</div></div>{% endif %}
 			</div>
 
 			<div class="column">
-				{% if grade %}<div id="grade" class="{{ class.grade }}">{{ grade }}</div>{% endif %}
+				{% if grade %}<div id="grade" class="{{ class.grade }}{% if class.grades %}{{ class.grades[grade] }}{% endif %}">{{ grade }}</div>{% endif %}
 				{% if accuracy %}<div id="accuracy" class="{{ class.accuracy }}">{{ accuracy}}%</div>{% endif %}
 			</div>
 		</div>
@@ -425,7 +425,7 @@
 				<tbody>
 					{% for name, score in judges.items() %}
 					<tr class="judge-entry row spaced">
-						<td class="judge-name {% if class.judge %}{{ class.judge[name] }}{% endif %}">{{ name }}</td>
+						<td class="judge-name {% if class.judges %}{{ class.judges[name] }}{% endif %}">{{ name }}</td>
 						<td class="judge-score">{{ score }}</tr>
 					</tr>
 					{% endfor %}

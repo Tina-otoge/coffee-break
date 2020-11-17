@@ -5,7 +5,26 @@
 
 		"class": {
 			"avatar": "round",
-			"background_image": "https://pbs.twimg.com/media/D6cAt0XU0AAGwTZ.jpg"
+			"background_image": "https://pbs.twimg.com/media/D6cAt0XU0AAGwTZ.jpg",
+
+			"judges": {
+				"300": "blue"
+			},
+			"clear_types": {
+				"Failed": "red",
+				"Cleared": "orange",
+				"Fullcombo": "rainbow"
+			},
+			"grades": {
+				"SSH": "gray",
+				"SH": "gray",
+				"SS": "gold",
+				"S": "gold",
+				"A": "green",
+				"B": "blue",
+				"C": "purple",
+				"D": "red"
+			}
 		},
 
 		"presets": {
@@ -16,27 +35,42 @@
 				"4": "pink",
 				"5.3": "purple",
 				"6.5": "rainbow"
-			},
+			}
+		}
+	},
+	"IIDX": {
+		"game": "beatmania IIDX",
 
-			"clear_type": {
-				"Failed": "red",
-				"Cleared": "orange",
-				"Fullcombo": "rainbow"
-			},
+		"mode": "SP",
 
-			"grade": {
-				"SSH": "gray",
-				"SH": "gray",
-				"SS": "gold",
-				"S": "gold",
-				"A": "green",
-				"B": "blue",
-				"C": "purple",
-				"D": "red"
+		"class": {
+			"grade": "blue",
+			"judges": {
+				"PGREAT": "rainbow"
 			},
-
-			"judge": {
-				"300": "blue"
+			"clear_types": {
+				"FAIL": "red",
+				"CLEAR": "blue",
+				"HARD CLEAR": "red",
+				"EXHARD CLEAR": "gold",
+				"FULLCOMBO": "rainbow"
+			},
+			"difficulties": {
+				"BEGINNER": "green",
+				"NORMAL": "blue",
+				"HYPER": "orange",
+				"ANOTHER": "red",
+				"LEGGENDARIA": "magenta",
+				"BLACK ANOTHER": "magenta",
+				"INSANE": "magenta"
+			}
+		},
+		
+		"settings": {
+			"auto_combo": true,
+			"auto_fc": {
+				"fc": "FULLCOMBO",
+				"not_fc": "CLEARED"
 			}
 		}
 	}

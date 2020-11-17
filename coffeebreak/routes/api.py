@@ -13,7 +13,8 @@ def fill_presets(data):
         print('Could not find preset for {}'.format(preset_name))
         return data
     presets['class'] = presets.get('class', {})
-    for key, value in presets.get('presets', {}).items():
+    presets['presets'] = presets.get('presets', {})
+    for key, value in presets['presets'].items():
         if key == 'level':
             actual_level = data.get('level')
             if not actual_level:
@@ -49,6 +50,15 @@ def handle_settings(data):
         data['max_chart_combo'] = sum(data.get('judges', {}).values())
     if data['settings'].get('auto_date'):
         data['date'] = data.get('date') or '{} UTC'.format(datetime.utcnow().replace(microsecond=0))
+    if data['settings'].get('auto_fc') and not data.get('clear_type'):
+        if data.get('breaks'):
+            fc = data['breaks'] == '0'
+        else:
+            fc = data.get('judges', {}).get(data['settings']['auto_fc'].get('miss', 'MISS')) == 0
+        if fc:
+            data['clear_type'] = data['settings']['auto_fc'].get('fc', 'FULLCOMBO')
+        else:
+            data['clear_type'] = data['settings']['auto_fc'].get('not_fc', 'CLEARED')
     return data
 
 def filter_data(data=None):
