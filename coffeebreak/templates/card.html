@@ -6,7 +6,7 @@
 	<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
 	<title>Coffee Break ☕ - Scorecard generator</title>
 	<style>
-		@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+		@import url('https://fonts.googleapis.com/css?family=Roboto:wght@400;900&display=swap');
 
 		:root {
 			--red: #f6453d;
@@ -23,6 +23,8 @@
 			--magenta: #c23df6;
 			--pink: #f63ddc;
 			--rainbow: linear-gradient(to right, var(--yellow),var(--blreen),var(--magenta));
+			--gray: gray;
+			--big: 900;
 		}
 
 		* {
@@ -46,20 +48,39 @@
 		}
 
 		html {
-			background-color: white;
+			background-color: black;
 		}
 
 		body {
+			position: relative;
 			width: 500px;
 			margin: 0;
 			padding: 0.5em;
 			font-size: 24px;
 			color: white;
 			font-family: Roboto, sans-serif;
-			{% if background %}
-			background: {{ background }};
+		}
+
+		body::before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			{% if not settings.no_darker %}
+			filter: opacity(0.3);
+			{% endif %}
+			z-index: -1;
+			{% if class.background_color %}
+			background-color: {{ class.background_color }}
 			{% else %}
 			background-color: #333;
+			{% endif %}
+			background-position: center center;
+			{% if class.background_image %}
+			background-image: url('{{ class.background_image }}');
 			{% endif %}
 		}
 
@@ -132,7 +153,7 @@
 		}
 
 		#title {
-			font-weight: bolder;
+			font-weight: var(--big);
 			font-size: 1.3em;
 			letter-spacing: 1.1;
 		}
@@ -205,7 +226,7 @@
 		}
 
 		#results {
-			background-color: #555;
+			background-color: rgba(120, 120, 120, .75);
 			margin-top: 1em;
 		}
 
@@ -404,7 +425,7 @@
 				<tbody>
 					{% for name, score in judges.items() %}
 					<tr class="judge-entry row spaced">
-						<td class="judge-name {{ class["judge-" + name] }}">{{ name }}</td>
+						<td class="judge-name {% if class.judge %}{{ class.judge[name] }}{% endif %}">{{ name }}</td>
 						<td class="judge-score">{{ score }}</tr>
 					</tr>
 					{% endfor %}

@@ -1,0 +1,43 @@
+{
+	"osu!": {
+		"game": "osu!",
+		"copyright": "osu!",
+
+		"class": {
+			"avatar": "round",
+			"background_image": "https://pbs.twimg.com/media/D6cAt0XU0AAGwTZ.jpg"
+		},
+
+		"presets": {
+			"level": {
+				"0": "green",
+				"2": "blue",
+				"2.7": "gold",
+				"4": "pink",
+				"5.3": "purple",
+				"6.5": "rainbow"
+			},
+
+			"clear_type": {
+				"Failed": "red",
+				"Cleared": "orange",
+				"Fullcombo": "rainbow"
+			},
+
+			"grade": {
+				"SSH": "gray",
+				"SH": "gray",
+				"SS": "gold",
+				"S": "gold",
+				"A": "green",
+				"B": "blue",
+				"C": "purple",
+				"D": "red"
+			},
+
+			"judge": {
+				"300": "blue"
+			}
+		}
+	}
+}
