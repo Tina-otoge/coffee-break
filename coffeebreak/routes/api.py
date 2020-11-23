@@ -10,7 +10,7 @@ def fill_presets(data):
     with open(root_path / 'presets.json') as f:
         presets = json.load(f).get(data['settings']['preset'])
     if not presets:
-        print('Could not find preset for {}'.format(preset_name))
+        print('Could not find presets file')
         return data
     presets['class'] = presets.get('class', {})
     presets['presets'] = presets.get('presets', {})

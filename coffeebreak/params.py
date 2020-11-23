@@ -1,14 +1,12 @@
 ARGUMENTS = {
-    # player
-    'avatar': 'Must be an URL',
-    'game': None,
     'username': None,
     'player_code': 'Used in some games to add to a friendlist',
     'rank': 'The dan rank or skill level of a player',
+    'avatar': 'Must be an URL',
     'playstyle': 'Precision on the playstyle, such as controller or keyboard',
     'profile_extras': 'Extra infos, arcade, global rank, country...',
 
-    # song
+    'game': None,
     'title': None,
     'subtitle': None,
     'artist': None,
@@ -17,33 +15,28 @@ ARGUMENTS = {
     'bpm': None,
     'jacket': 'Must be an URL',
 
-    # chart
     'mode': 'Useful for games with SP and DP modes',
-    'difficulty': 'The name of the chart difficulty',
     'level': 'The level of the chart difficulty',
-    'creator': 'The creator of the chart/map',
+    'difficulty': 'The name of the chart difficulty',
     'notes_count': 'Amount of notes',
-    'mods': 'List of mods, use shortnames/acronyms if possible',
+    'max_chart_combo': 'Maximum combo reachable on the chart',
+    'creator': 'The creator of the chart/map',
+    'mods': 'List of mods, use shortnames/acronyms if possible<br>JSON formatted, ie: ["EZ", "FL"]',
 
-    # score
-    'grade': 'The grade or rank, such as A, AA+, S, etc',
     'clear_type': 'The clear type of medal, such as CLEARED, FAILED, HARD CLEAR, FULLCOMBO, etc',
     'score': None, # actual score
+    'grade': 'The grade or rank, such as A, AA+, S, etc',
     'accuracy': None,
     'hp': 'Must be an integer from 0 to 100',
     'max_combo': 'Maximum combo reached by the player',
-    'max_chart_combo': 'Maximum combo reachable on the chart',
     'breaks': 'Combo breaks',
     'pp': 'Performance points',
 
-    # judges
-    'judges': 'Dictionary of judges mapping to their respective amounts',
+    'judges': 'Dictionary of judges mapping to their respective amounts<br>JSON formatted, ie: {"GREAT": 100, "GOOD": 10, "MISS": 2}',
 
-    # footer
     'date': 'The date on which the score was achieved',
     'copyright': 'A custom copyright notice',
 
-    # customization
     'class': 'Apply custom styles to certain elements',
     'settings': None,
 }
@@ -60,3 +53,20 @@ DEFAULTS = {
 }
 
 OBJECTS = ['class', 'settings', 'mods', 'judges']
+
+TYPES = {
+    'avatar': 'url',
+    'jacket': 'url',
+    'playstyle': {'radio': ['controller', 'keyboard', 'arcade']},
+    'profile_extras': 'textarea',
+    'bpm': {'label': 'BPM'},
+    'mode': {'radio': ['SP', 'DP']},
+    'notes_count': 'number',
+    'clear_type': {'radio': ['FULLCOMBO', 'EXHARD CLEAR', 'HARD CLEAR', 'CLEARED', 'FAILED']},
+    'hp': {'type': 'number', 'min': '0', 'max': '100', 'label': 'HP'},
+    'max_combo': 'number',
+    'max_chart_combo': 'number',
+    'breaks': 'number',
+    'pp': {'label': 'pp'},
+    'date': 'date',
+}

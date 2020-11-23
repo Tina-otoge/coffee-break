@@ -1,18 +1,57 @@
 <!doctype html>
 {% set prefilled = prefilled or {} %}
-{% macro input(name, description='', example='', value='', type='text', size=20) -%}
-	{% with id = "form-" + name.lower()|replace('_', '-') %}
-	<p class="form-input">
-		<label for="{{ id }}">{{ name[0]|upper + name[1:]|replace('_', ' ') }}:{% if description %}<br>{{ description }}{% endif %}</label>
+{% macro input(elem) %}
+	<p class="form-input" id="form-{{ elem.id }}">
+
+		{% if elem.params.type == 'radio' %}
+		<span class="label">
+			{{ elem.label }}:{% if elem.params.description %}
+				<span class="description">{{ elem.params.description|safe }}</span>
+			{% endif %}
+		</span>
+		{% for option in elem.params.radio %}
+			{% with id = elem.id + '-' + option %}
+			<span class="form-radio">
+				<input type="radio" id="{{ id }}" name="{{ elem.id }}" value="{{ option }}"
+					{% if prefilled[elem.name] == option %}checked{% endif %}
+				>
+				<label for={{ id }}>{{ option }}</label>
+			</span>
+			{% endwith %}
+		{% endfor %}
+		<span class="form-radio-other">
+		{% with id = elem.id + '-other' %}
+		<input type="radio" id="{{ id }}" name="{{ elem.id }}" value="">
+		<label for="{{ id }}">Other: </label>
+		<input type="text" name="{{ elem.id }}-other">
+		{% endwith %}
+		</span>
+		{% else %}
+
+		<label for="{{ elem.id }}">
+			{{ elem.label }}:{% if elem.params.description %}
+				<span class="description">{{ elem.params.description|safe }}</span>
+			{% endif %}
+		</label>
+		{% if elem.params.type == 'textarea' %}
+		<textarea
+		{% else %}
 		<input
-			type="{{ type }}"
-			name="{{ name }}"
-			id="{{ id }}"
-			value="{{ value|e or prefilled[name] }}"
-			size="{{ size }}"
-		>
+		{%- endif %}
+			{%- for key, value in elem.params.items() if value and key != 'description' %}
+			{{ key + '=' + value }}
+			{%- endfor %}
+			{%- if prefilled[elem.name] %}
+			value="{{ prefilled[elem.name] }}"
+			{%- endif %}
+			id="{{ elem.id }}"
+			name="{{ elem.id }}"
+		>{% if elem.params.type == 'textarea' %}</textarea>
+		{% endif %}
+
+		{% endif %}
+
 	</p>
-	{% endwith %}
 {%- endmacro %}
 <html>
 	<head>
@@ -47,9 +86,9 @@
 				All endpoints are reachable on GET and POST requests.
 			</p>
 
-			<form action="{{ url_for('generate_image') }}">
-				{% for name, description in inputs.items() %}
-				{{ input(name=name, description=description) }}
+			<form id="gene-form" action="{{ url_for('generate_image') }}">
+				{% for elem in inputs %}
+				{{ input(elem) }}
 				{% endfor %}
 				<p>
 					<input type="submit" value="Generate">
