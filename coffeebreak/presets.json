@@ -6,6 +6,7 @@
 		"class": {
 			"avatar": "round",
 			"background_image": "https://pbs.twimg.com/media/D6cAt0XU0AAGwTZ.jpg",
+			"jacket": "contain",
 
 			"judges": {
 				"300": "blue",
@@ -23,8 +24,11 @@
 				"SSH": "gray",
 				"SH": "gray",
 				"SS": "gold",
+				"S++": "gold",
+				"S+": "gold",
 				"S": "gold",
-				"A": "green",
+				"A+": "lime",
+				"A": "lime",
 				"B": "blue",
 				"C": "purple",
 				"D": "red"

@@ -365,7 +365,7 @@
 					{% endif %}	
 				</div>
 			</div>
-			{% if jacket %}<img id="jacket" src="{{ jacket }}">{% endif %}
+			{% if jacket %}<img id="jacket" class="{{ class.jacket }}" src="{{ jacket }}">{% endif %}
 		</div>
 
 		<div class="row spaced">
@@ -373,7 +373,7 @@
 				<div id="chart">
 					{% if mode %}<span id="mode" class="borders">{{ mode }}</span>{% endif %}
 					{% if difficulty %}<span id="difficulty" class="borders {{ class.difficulty }}">{{ difficulty }}</span>{% endif %}
-					{% if level %}<span id="level" class="borders {{ class.level }}">{{ level }}</span>{% endif %}
+					{% if level %}<span id="level" class="borders {{ class.level }}">{{ level }}{% if class.level_suffix %}{{ class.level_suffix }}{% endif %}</span>{% endif %}
 					<span id="mods">
 						{% for mod in mods %}
 						<span class="mod borders mod-{{ mod }}">{{ mod }}</span>
@@ -416,7 +416,7 @@
 
 				{% if pp %}
 				<div id="pp" class="column">
-					<small>pp:</small>
+					<small>{{ class.pp_name or "pp" }}:</small>
 					<span class="value">{{ pp }}</span>
 				</div>
 				{% endif %}
