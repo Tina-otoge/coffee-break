@@ -74,11 +74,12 @@
 			{% endif %}
 			z-index: -1;
 			{% if class.background_color %}
-			background-color: {{ class.background_color }}
+			background-color: {{ class.background_color }};
 			{% else %}
 			background-color: #333;
 			{% endif %}
 			background-position: center center;
+			background-size: cover;
 			{% if class.background_image %}
 			background-image: url('{{ class.background_image }}');
 			{% endif %}
