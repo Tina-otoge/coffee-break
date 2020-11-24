@@ -54,6 +54,10 @@ Result:
 Documentation
 -------------
 
+The documentation can be built by running `make html` in the `/docs` folder.
+
+Live version temporarly hosted at https://tina.moe/private/coffee-docs/
+
 - [API reference](api_ref.md)
 
 # Development, issues and features request
