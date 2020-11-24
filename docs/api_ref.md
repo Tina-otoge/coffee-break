@@ -92,7 +92,7 @@ genre           | any              | Song genre
 bpm             | any              | The song BPM, is a string because some games have varying BPM or text as BPM, such as `"170-173"` or `"???"`
 jacket          | string, URL      | Song jacket picture
 mode            | any              | Useful for games with Single Play and Double Play modes
-level           | string or number | Chart level, such as: `3`, `18`, `9.3` or `"5.73⭐"`
+level           | float or number  | Chart level, such as: `3`, `18` or `9.3`
 difficulty      | any              | Chart difficulty name, such as "HYPER", "EX" or "Insane"
 notes_count     | number           | The amount of notes in the chart
 max_chart_combo | number           | The maximum reachable combo, displayed when the player's max combo is also provided
@@ -145,6 +145,8 @@ Name | Description
 -----|------------
 background_color | Special element, takes a color instead of a class
 background_image | Special element, takes an URL instead of a class
+pp_name | Special element, renames the pp label
+level_suffix | Special element, adds to the level
 avatar |
 rank |
 difficulty |
