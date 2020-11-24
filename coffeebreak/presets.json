@@ -8,12 +8,16 @@
 			"background_image": "https://pbs.twimg.com/media/D6cAt0XU0AAGwTZ.jpg",
 
 			"judges": {
-				"300": "blue"
+				"300": "blue",
+				"GREAT": "blue"
 			},
 			"clear_types": {
 				"Failed": "red",
+				"FAILED": "red",
 				"Cleared": "orange",
-				"Fullcombo": "rainbow"
+				"CLEARED": "orange",
+				"Fullcombo": "rainbow",
+				"FULLCOMBO": "rainbow"
 			},
 			"grades": {
 				"SSH": "gray",

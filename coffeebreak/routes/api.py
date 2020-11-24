@@ -24,7 +24,7 @@ def fill_presets(data):
             levels.sort(reverse=True)
             for level in levels:
                 if actual_level > float(level):
-                    presets[key] = value[level]
+                    presets['class'][key] = value[level]
                     break
             continue
         if key == 'judge':
@@ -51,14 +51,17 @@ def handle_settings(data):
     if data['settings'].get('auto_date'):
         data['date'] = data.get('date') or '{} UTC'.format(datetime.utcnow().replace(microsecond=0))
     if data['settings'].get('auto_fc') and not data.get('clear_type'):
+        fc_settings = {'miss': 'MISS', 'fc': 'FULLCOMBO', 'not_fc': 'CLEARED'}
+        if isinstance(data['settings']['auto_fc'], dict):
+            fc_settings.update(data['settings']['auto_fc'])
         if data.get('breaks'):
             fc = data['breaks'] == '0'
         else:
-            fc = data.get('judges', {}).get(data['settings']['auto_fc'].get('miss', 'MISS')) == 0
+            fc = data.get('judges', {}).get(fc_settings['miss']) == 0
         if fc:
-            data['clear_type'] = data['settings']['auto_fc'].get('fc', 'FULLCOMBO')
+            data['clear_type'] = fc_settings['fc']
         else:
-            data['clear_type'] = data['settings']['auto_fc'].get('not_fc', 'CLEARED')
+            data['clear_type'] = fc_settings['not_fc']
     return data
 
 def filter_data(data=None):
