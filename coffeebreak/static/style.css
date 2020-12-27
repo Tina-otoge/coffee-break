@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+:root {
+	--padding: 1em;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -27,11 +31,6 @@ main {
 	padding: 1em;
 }
 
-.form-input {
-	display: flex;
-	flex-direction: column;
-}
-
 .code {
 	font-style: normal;
 	font-family: monospace;
@@ -39,4 +38,53 @@ main {
 	color: black;
 	border-radius: 3px;
 	padding: 0.1em 0.2em;
+}
+
+#gene-form, .form-input {
+	display: flex;
+	flex-flow: wrap row;
+	justify-content: space-between;
+}
+
+.form-input {
+	flex-direction: column;
+	width: 100%;
+}
+
+.form-input .description {
+	display: block;
+	font-size: small;
+	color: #606060;
+}
+
+#form-username,
+#form-player-code,
+#form-rank,
+
+#form-grade,
+#form-accuracy,
+#form-hp,
+#form-max-combo,
+#form-breaks,
+#form-pp
+{
+	width: calc(100% / 3 - var(--padding));
+}
+
+#form-title,
+#form-subtitle,
+#form-artist,
+#form-subartist,
+#form-genre,
+#form-bpm,
+#form-level,
+#form-difficulty,
+#form-notes-count,
+#form-max-chart-combo,
+
+
+#form-date,
+#form-copyright
+{
+	width: calc(100% / 2 - var(--padding));
 }

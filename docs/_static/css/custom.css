@@ -1,0 +1,6 @@
+.rst-content table.docutils td,
+.rst-content table.field-list td,
+.wy-table td
+{
+	white-space: normal;
+}
