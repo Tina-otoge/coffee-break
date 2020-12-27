@@ -10,7 +10,7 @@
 			{% endif %}
 		</span>
 		{% for option in elem.params.radio %}
-			{% with id = elem.id + '-' + option %}
+			{% with id = elem.id + '-' + option|idify %}
 			<span class="form-radio">
 				<input type="radio" id="{{ id }}" name="{{ elem.name }}" value="{{ option }}"
 					{% if prefilled[elem.name] == option %}checked{% endif %}
@@ -21,9 +21,9 @@
 		{% endfor %}
 		<span class="form-radio-other">
 		{% with id = elem.id + '-other' %}
-		<input type="radio" id="{{ id }}" name="{{ elem.id }}" value="">
+		<input type="radio" id="{{ id }}" name="{{ elem.name }}" value="_other">
 		<label for="{{ id }}">Other: </label>
-		<input type="text" name="{{ elem.id }}-other">
+		<input type="text" name="{{ elem.id + '-other' }}">
 		{% endwith %}
 		</span>
 		{% else %}

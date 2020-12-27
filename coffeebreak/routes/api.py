@@ -66,7 +66,13 @@ def handle_settings(data):
 
 def filter_data(data=None):
     data = data or dict(request.values)
-    return {k: v for k, v in data.items() if k in params.ARGUMENTS and v != ''}
+    if data.get('clear_type') == '_other':
+        data['clear_type'] = data['clear-type-other']
+    if data.get('mode') == '_other':
+        data['mode'] = data['mode-other']
+    data = {k: v for k, v in data.items() if k in params.ARGUMENTS and v != ''}
+    print(data)
+    return data
 
 @app.route('/api/card.html', methods=['GET', 'POST'])
 def generate_html(data=None):
