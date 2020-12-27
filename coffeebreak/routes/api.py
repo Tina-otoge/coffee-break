@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 from flask import abort, current_app, send_file, request, url_for, jsonify
-from coffeebreak import app, image, params, root_path, storage
+from coffeebreak import app, idify, image, params, root_path, storage
 
 def fill_presets(data):
     with open(root_path / 'presets.json') as f:
@@ -66,10 +66,10 @@ def handle_settings(data):
 
 def filter_data(data=None):
     data = data or dict(request.values)
-    if data.get('clear_type') == '_other':
-        data['clear_type'] = data['clear-type-other']
-    if data.get('mode') == '_other':
-        data['mode'] = data['mode-other']
+    for input in ['playstyle', 'mode', 'clear_type']:
+        if data.get(input) != '_other':
+            continue
+        data[input] = data.get(idify(input), '')
     data = {k: v for k, v in data.items() if k in params.ARGUMENTS and v != ''}
     print(data)
     return data
