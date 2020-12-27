@@ -2,12 +2,12 @@ import json
 
 from flask import abort, render_template
 
-from coffeebreak import app, params, root_path
+from coffeebreak import app, idify, params, root_path
 
 class Input:
     def __init__(self, name, params={}):
         self.name = name
-        self.id = self.name.replace('_', '-')
+        self.id = idify(name)
         self.label = params.get('label') or (self.name[0].upper() + self.name[1:].replace('_', ' '))
         self.params = params
 
