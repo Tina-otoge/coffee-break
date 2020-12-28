@@ -69,9 +69,8 @@ def filter_data(data=None):
     for input in ['playstyle', 'mode', 'clear_type']:
         if data.get(input) != '_other':
             continue
-        data[input] = data.get(idify(input), '')
+        data[input] = data.get('{}-other'.format(idify(input)), '')
     data = {k: v for k, v in data.items() if k in params.ARGUMENTS and v != ''}
-    print(data)
     return data
 
 @app.route('/api/card.html', methods=['GET', 'POST'])
