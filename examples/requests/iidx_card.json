@@ -27,7 +27,9 @@
         "difficulty": "magenta",
         "clear_type": "ocean",
 		"grade": "green",
-        "judge-PGREAT": "rainbow"
+        "judges": {
+			"PGREAT": "rainbow"
+		}
     }
 }
 

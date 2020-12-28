@@ -28,7 +28,9 @@
         "difficulty": "red",
         "clear_type": "rainbow",
 		"grade": "blue",
-        "judge-PGREAT": "rainbow"
+        "judges": {
+			"PGREAT": "rainbow"
+		}
     }
 }
 

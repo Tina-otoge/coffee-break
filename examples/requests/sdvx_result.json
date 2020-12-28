@@ -33,7 +33,9 @@
         "clear_type": "red",
 		"hp": "bg-orange",
 		"grade": "rainbow",
-        "judge-CRITICAL": "yellow",
+        "judges": {
+			"CRITICAL": "yellow"
+		},
 		"rank": "purple",
 		"avatar": "contain"
     }

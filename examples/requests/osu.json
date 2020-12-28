@@ -34,7 +34,9 @@
 		"level": "green",
         "clear_type": "rainbow",
 		"grade": "gold",
-        "judge-300": "blue",
+        "judges": {
+			"300": "blue"
+		},
 		"rank": "purple",
 		"avatar": "round"
     }
