@@ -372,7 +372,7 @@
 			<div id="chart-column" class="column spaced">
 				<div id="chart">
 					{% if mode %}<span id="mode" class="borders">{{ mode }}</span>{% endif %}
-					{% if difficulty %}<span id="difficulty" class="borders {{ class.difficulty }}">{{ difficulty }}</span>{% endif %}
+					{% if difficulty %}<span id="difficulty" class="borders {{ class.difficulty }} {% if class.difficulties %}{{ class.difficulties[difficulty] }}{% endif %}">{{ difficulty }}</span>{% endif %}
 					{% if level %}<span id="level" class="borders {{ class.level }}">{{ level }}{% if class.level_suffix %}{{ class.level_suffix }}{% endif %}</span>{% endif %}
 					<span id="mods">
 						{% for mod in mods %}

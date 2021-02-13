@@ -81,5 +81,45 @@
 				"not_fc": "CLEARED"
 			}
 		}
+	},
+	"SDVX": {
+		"game": "SOUND VOLTEX",
+
+		"class": {
+			"avatar": "contain",
+			"judges": {
+				"CRITICAL": "yellow"
+			},
+			"grades": {
+				"S": "rainbow",
+				"AAA+": "gold",
+				"AAA": "gold",
+				"AA+": "gold",
+				"AA": "gold",
+				"A+": "gold",
+				"A": "gold",
+				"B": "blue",
+				"C": "purple",
+				"D": "red"
+			},
+			"difficulties": {
+				"NOV": "purple",
+				"NOVICE": "purple",
+				"ADV": "yellow",
+				"ADVANCED": "yellow",
+				"EXH": "red",
+				"EXHAUST": "red",
+				"MXM": "white",
+				"MAXIMUM": "white",
+				"INF": "rainbow",
+				"INFINITE": "rainbow",
+				"GRV": "orange",
+				"GRAVITY": "orange",
+				"HVN": "cyan",
+				"HEAVENLY": "cyan",
+				"VVD": "pink",
+				"VIVID": "pink"
+			}
+		}
 	}
 }
